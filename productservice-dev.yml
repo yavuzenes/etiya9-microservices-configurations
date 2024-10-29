@@ -2,7 +2,7 @@ spring:
   application:
     name: productservice
   datasource:
-    url: "jdbc:postgresql://localhost:5432/productdb"
+    url: "jdbc:postgresql://localhost:54320/productdb"
     username: postgres
     password: test
   kafka:
