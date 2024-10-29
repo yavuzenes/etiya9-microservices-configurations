@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: productservice
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/productdb"
+    username: postgres
+    password: test
+  kafka:
+    bootstrapServer: "localhost:9092"
+    consumer:
+      group-id: productService
+      keyDeserializer: org.apache.kafka.common.serialization.StringDeserializer
+      valueDeserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    showSql: true
+    hibernate:
+      ddlAuto: update
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
